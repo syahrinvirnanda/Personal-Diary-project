@@ -33,6 +33,7 @@ def save_diary():
 
     today = datetime.now()
     time = today.strftime('%Y-%m-%d-%H-%M-%S')
+    timenow = today.strftime('%Y.%m.%d')
 
 
     file = request.files['file_give']
@@ -51,7 +52,8 @@ def save_diary():
         'file': filename,
         'profile': profilename,
         'title': title_receive,
-        'content': content_receive
+        'content': content_receive,
+        'timenow' : timenow, 
     }
     db.diary.insert_one(doc)
     return jsonify ({'message': "data was saved!"})
